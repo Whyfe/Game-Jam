@@ -1,0 +1,110 @@
+#: import NoTransition kivy.uix.screenmanager.NoTransition
+#: import get_color_from_hex kivy.utils.get_color_from_hex
+#:import utils kivy.utils
+<Main>: 
+    BoxLayout:
+        orientation: 'vertical'
+        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: 1, 0.9
+            spacing: 20
+            Image: 
+                id: background
+                size_hint: 1, 0.9
+                source: 'screen.png'
+                allow_stretch: True
+                keep_ratio: False
+            BoxLayout:
+                size_hint: 1, 0.1
+                spacing: 20
+                padding: 20, 0, 20, 20
+                Label:
+                    font_name: "Press Start 2P"
+                    size_hint: 0.2, 1
+                    id: coins
+                    text: '0'
+                    halign: 'center'
+                    canvas.before:
+                        Color:
+                            rgba: 250/255, 200/255, 115/255, 0.20
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [10]
+                        Color:
+                            rgba: 250/255, 180/255, 40/255, 0.60
+                        Line:
+                            width: 3
+                            rounded_rectangle: (self.x, self.y, self.width, self.height, 10)
+
+                Button:
+                    font_name: "Press Start 2P"
+                    text: 'ЛАМАТИ'
+                    background_color: 0,0,0,0
+                    size_hint: 0.7, 1
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                    on_release: app.on_click()
+                    canvas.before:
+                        Color:
+                            rgba: 73/255, 45/255, 12/255, 0.50
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [10]
+                        Color:
+                            rgba: 71/255, 38/255, 0/255, 1
+                        Line:
+                            width: 3
+                            rounded_rectangle: (self.x, self.y, self.width, self.height, 10)
+    FloatLayout:
+        Button:
+            background_color: 0,0,0,0
+            size_hint: None, None
+            size: 150, 150
+            pos_hint: {'center_x': 0.85, 'center_y': 0.93}
+            opacity: 1 if root.ids.coins.text and int(root.ids.coins.text) >= 442 else 0
+            on_release: app.change_dragon_image() if root.ids.coins.text and int(root.ids.coins.text) >= 442 else None
+            canvas.before:
+                Color:
+                    rgba: 38/255, 43/255, 55/255, 0.50
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [10]
+                Color:
+                    rgba: 32/255, 45/255, 60/255, 1
+                Line:
+                    width: 3
+                    rounded_rectangle: (self.x, self.y, self.width, self.height, 10)
+            Image:
+                source: 'rigths/img/eye.png'
+                size_hint: None, None
+                size: self.parent.size  
+                pos: self.parent.pos
+        Button:
+            id: perot_button
+            background_color: 0,0,0,0
+            size_hint: None, None
+            size: 150, 150
+            opacity: 0
+            pos_hint: {'center_x': 0.15, 'center_y': 0.93}
+            on_release: app.change_parrot_image()
+            canvas.before:
+                Color:
+                    rgba: 83/255, 18/255, 18/255, 0.50
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [10]
+                Color:
+                    rgba: 110/255, 7/255, 7/255, 1
+                Line:
+                    width: 3
+                    rounded_rectangle: (self.x, self.y, self.width, self.height, 10)
+            Image:
+                source: 'rigths/img/parrot.png'
+                size_hint: None, None
+                size: self.parent.size  
+                pos: self.parent.pos
+       

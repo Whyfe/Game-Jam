@@ -1,0 +1,56 @@
+<CustomButton>:
+    padding: 10, 10 
+    font_name: "Press Start 2P"
+    text: 'далі>>>'
+    background_color: 0,0,0,0
+    size_hint: 1, 0.15
+    pos_hint: {'center_x': 0.5, 'y': 0}
+    on_release: app.on_click()
+    canvas.before:
+        Color:
+            rgba: 25/255, 27/255, 32/255, 1
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [10]
+        Color:
+            rgba: 22/255, 24/255, 27/255, 1
+        Line:
+            width: 3
+            rounded_rectangle: (self.x, self.y, self.width, self.height, 10)
+
+<CustomBlock1@Label>:
+    background_color: 0,0,0,0
+    size_hint: 1, 0.18
+    pos_hint: {'center_x': 0.5, 'center_y': 1}
+    canvas.before:
+        Color:
+            rgba: 15/255, 15/255, 15/255, 1
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+           
+
+<CustomBlock2@Label>:
+    background_color: 0,0,0,0
+    size_hint: 0.1, 1
+    pos_hint: {'x': 0, 'y': 0}
+    canvas.before:
+        Color:
+            rgba: 15/255, 15/255, 15/255, 1
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+           
+
+<CustomBlock3@Label>:
+    background_color: 0,0,0,0
+    size_hint: 0.1, 1
+    pos_hint: {'x': .9, 'y': 0}
+    canvas.before:
+        Color:
+            rgba: 15/255, 15/255, 15/255, 1
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+           
